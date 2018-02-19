@@ -33,3 +33,5 @@
 *.idb
 *.tlog
 *.lastbuildstate
+.vs/ProgrammingPractics/v15/Browse.VC.opendb
+.vs/ProgrammingPractics/v15/Browse.VC.db
