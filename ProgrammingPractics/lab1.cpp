@@ -1,9 +1,10 @@
 #include "lab1.h"
 #include "stdafx.h"
 #include <conio.h>
+
 using namespace std;
 
-void task1() 
+void Initialization()
 {
 	cout << "Hello, World!\n";
 
@@ -15,18 +16,20 @@ void task1()
 	cout << "\n Variable b equals " << b;
 	cout << "\n Summ of a and b equal = " << a + b << endl; 
 }
-void task2()
+void Division()
 {
 	int a = 5;
-	int b = 3;
+	int b = 2;
 	float z = 5.0;
 	float y = 3.0;
 	cout << "Float variables division: " << z / y << endl;
 	cout << "Integer variables division: " << a / b << endl;
 
 }
-void task3()
+
+void Addition()
 {
+
 	int a;
 	int b;
 	cout << "Program for integer summation";
@@ -37,7 +40,9 @@ void task3()
 	cout << " \n Summ of and equals " << a << " " << b << " = " << a + b << endl;
 
 }
-void task4() {
+
+void Pointer()
+{
 	int value;
 	int* pointer; // ќбъ€вление указател€ на целочисленный тип данных
 	int anotherValue;
@@ -54,7 +59,8 @@ void task4() {
 	cout << "Value in pointer:" << *pointer << endl;
 
 }
-void task5() {
+void ParityOddness()
+{
 	int a;
 	cout << "Enter value for check on even/odd: ";
 	cin >> a;
@@ -67,7 +73,8 @@ void task5() {
 		cout << "\n Value is " << a << " odd!" << endl;
 	}
 }
-void task6() {
+void Multiplicity()
+{
 	int a;
 	cout << "Enter value for check on even/odd: ";
 	cin >> a;
@@ -84,7 +91,8 @@ void task6() {
 		cout << "\n Value " << a << " doesn`t multiply 5 or 2!" << endl;
 	}
 }
-void task7() {
+void Precondition()
+{
 	int a = 0;
 	while (a < 5) 
 	{
@@ -92,7 +100,9 @@ void task7() {
 		a++;
 	}
 }
-void task8() {
+
+void Postcondition()
+{
 	int a = 0;
 	do 
 	{
@@ -100,7 +110,9 @@ void task8() {
 		a++;
 	} while (a < 5);
 }
-void task9() {
+
+void Iterative()
+{
 	int a = 10;
 	for (int i = 0; i < 10; i++)
 	{
@@ -113,8 +125,10 @@ void task9() {
 		cout << "Iteration " << i << "   Value is " << a << endl;;
 	}
 }
-void task10() {
-	int a = 10;
+
+void EarlyCompletion() {
+	cout << "\n" << "\n" << endl << endl;
+	int a = 10; 
 	for (int i = 0; i < 10; i++)
 	{
 		a--;
@@ -126,7 +140,7 @@ void task10() {
 	}
 	cout << "\n A is " << a << endl;
 }
-void task11() {
+void Converting() {
 	int a = 5;
 	int b = 3;
 	float z;
@@ -142,11 +156,11 @@ void task11() {
 	cout << endl << "Value of z is " << z << endl;
 	// явное приведение а к float и не€вное b к float  
 	// дл€ выполнени€ делени€
-	z = ((float)a) / b;
+	z = ((float)a) / float(b);
 	cout << endl << "Value of z is " << z << endl;
 }
 
-void launchLab1() 
+void LaunchLab1() 
 {
 	setlocale(0, "");
 
@@ -177,49 +191,50 @@ void launchLab1()
 		switch (ascii)
 		{
 		case '1':
-			task1();
+			Initialization();
 			system("pause");
 			break;
 		case '2':
-			task2();
+			Division();
 			system("pause");
 			break;
 		case '3':
-			task3();
+			Addition();
 			system("pause");
 			break;
 		case '4':
-			task4();
+			Pointer();
 			system("pause");
 			break;
 		case '5':
-			task5();
+			ParityOddness();
 			system("pause");
 			break;
 		case '6':
-			task6();
+			Multiplicity();
 			system("pause");
 			break;
 		case '7':
-			task7();
+			Precondition();
 			system("pause");
 			break;
 		case '8':
-			task8();
+			Postcondition();
 			system("pause");
 			break;
 		case '9':
-			task9();
+			Iterative();
 			system("pause");
 			break;
 		case '0':
-			task10();
+			EarlyCompletion();
 			system("pause");
 			break;
 		case '-':
-			task11();
+			Converting();
 			system("pause");
 			break;
 		}
 	}
 }
+
