@@ -1,4 +1,5 @@
 #pragma once
+
 int CinDigit();
 void PrintHelloWorld();
 double MakeCalculation(int value1, int value2, char key);

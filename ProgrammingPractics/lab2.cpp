@@ -99,7 +99,6 @@ int PointerGetRoots(int a, int b, int c, double* x1, double* x2)
 	}
 	return countRoots;
 }
-
 int ReferenceGetRoots(int a, int b, int c, double& x1, double& x2)
 {
 	int D, countRoots;
@@ -270,7 +269,6 @@ void BubbleSortArray3(double* arrayPointer, int arraySize)
 		}
 	}
 }
-
 
 void MultiplyMatrices(int** matrixA, int rowsA, int columnsA, int** matrixB, int rowsB, int columnsB, int** matrixResult)
 {
@@ -530,7 +528,6 @@ void LaunchLab2()
 					}
 					cout << endl;
 				}
-				cout << "\n____________________________" << endl;
 				cout << "Матрица B:" << endl;
 				for (int i = 0; i < rowsB; i++)
 				{
@@ -541,7 +538,6 @@ void LaunchLab2()
 					}
 					cout << endl;
 				}
-				cout << "\n____________________________" << endl;
 				cout << "Результирующая матрица:" << endl;
 				for (int i = 0; i < rowsResult; i++)
 				{
