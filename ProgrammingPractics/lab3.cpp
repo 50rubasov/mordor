@@ -1,8 +1,9 @@
-#include "lab3.h"
 #include "stdafx.h"
+#include "lab3.h"
+
 
 using namespace std;
-
+/*---------------------Замена табов на пробелы-------------------------------*/
 char* ReplaceTabsOnSpaces(char* string)
 {
 	char* result = new char[100];
@@ -28,7 +29,7 @@ char* ReplaceTabsOnSpaces(char* string)
 	return result;
 }
 
-
+/*---------------------Поиск длинны строки------------------------------*/
 int GetLength(char* string)
 {
 	int count = 0;
@@ -39,7 +40,7 @@ int GetLength(char* string)
 	return count;
 
 }
-
+/*---------------------Проверка на правильность ввода символов------------------------------*/
 int EnterValue()
 {
 	int value;
@@ -52,7 +53,7 @@ int EnterValue()
 	while (cin.get() != '\n');//Раз в строке есть посторонние символы, то эта строка нам не нужна, идём в конец строки
 	return value;
 }
-
+/*---------------------Верхний регистр------------------------------*/
 char* Uppercase(char* string)
 {
 	for (int i = 0; string[i] != '\0'; i++)
@@ -64,7 +65,7 @@ char* Uppercase(char* string)
 	}
 	return string;
 }
-
+/*---------------------Нижний регистр------------------------------*/
 char* Lowercase(char* string)
 {
 	for (int i = 0; string[i] != '\0'; i++)
@@ -76,7 +77,7 @@ char* Lowercase(char* string)
 	}
 	return string;
 }
-
+/*---------------------Поиск подстроки в строке------------------------------*/
 int FindSubstring(char* string, char* substring) 
 {
 	int j = 0;
@@ -97,7 +98,7 @@ int FindSubstring(char* string, char* substring)
 	}
 return -1;
 }
-
+/*---------------------Объединение строк------------------------------*/
 char* Concatenate(char* string1, char* string2) 
 {
 	int first = GetLength(string1);
@@ -108,7 +109,7 @@ char* Concatenate(char* string1, char* string2)
 	string1[first + GetLength(string2)] = 0;
 	return string1;
 }
-
+/*----------------------Вывод построки-----------------------------*/
 char* GetSubstring(char* string, int startIndex, int charCount) 
 {
 	int length = GetLength(string);
@@ -125,7 +126,7 @@ char* GetSubstring(char* string, int startIndex, int charCount)
 	}
 	else return NULL;
 }
-
+/*-------------------------Разбитие файла на дерикторию, имя, расширение--------------------------*/
 void SplitFilename(char* source, char* path, char* name, char* extension) 
 {
 	int slash = 0;
@@ -174,6 +175,82 @@ void SplitFilename(char* source, char* path, char* name, char* extension)
 			}
 	
 }
+/*--------------------------Проверка на надобность табуляции-------------------------*/
+bool isNeedTab(char* string, int i, int tab)
+{
+	while (i % tab != 0)
+	{
+		if (string[i] != ':')
+		{
+			return false;
+		}
+		i++;
+	}
+	return true;
+}
+/*---------------------------Замена пробелов на табы------------------------*/
+char* ReplaceSpacesOnTabs(char* string)
+{
+	char* resultString = new char[50];
+	int tab = 8;
+	int i = 0;
+	int j = 0;
+
+	for (; string[i + j]; i++)
+	{
+		if (string[i + j] == ':' && isNeedTab(string, i + j + 1, tab))
+		{
+			while ((i + j + 1) % 8 != 0)
+			{
+				j++;
+			}
+			resultString[i] = '\t';
+		}
+		else
+		{
+			resultString[i] = string[i + j];
+		}
+	}
+	resultString[i] = '\0';
+	return resultString;
+}
+
+/*----------------------------Работа со структурами-----------------------*/
+
+Person ReadPerson()
+{
+	int key=0;
+	Person person;
+	cout << "\nВведите Фамилию: ";
+	gets_s(person.Surname);
+	cout << "\nВведите Имя: ";
+	gets_s(person.Name);
+	cout << "\nВведите Возраст: ";
+	person.Age = EnterValue();
+	cout << "\nУкажите пол: 0-Женский/1-Мужской" << endl;
+	key = _getch() - 48;
+	while ((key != 0) && (key != 1))
+	{
+		cout << "\nУкажите пол: 0-Женский/1-Мужской" << endl;
+		key = _getch() - 48;
+	}
+	person.sex = (Sex)key;
+	return person;
+}
+void PrintPerson(Person person)
+{
+	cout << "Фамилия: " << person.Surname << endl;
+	cout << "Имя: " << person.Name << endl;
+	if (person.sex == 1) 
+	{
+		cout << "Пол: Мужской" << endl;
+	}
+	else
+	{
+		cout << "Пол: Женский" << endl;
+	}
+	cout << "Возраст: " << person.Age << endl;
+}
 void LaunchLab3()
 {
 	setlocale(0, "");
@@ -194,8 +271,7 @@ void LaunchLab3()
 		cout << "'6' - Разделение строки \n";
 		cout << "'7' - Замена табуляции на пробелы \n";
 		cout << "'8' - Замена пробелов на табы \n";
-		cout << "'9 - Сортировка массива \n";
-		cout << "'0 - Перемножение матриц \n";
+		cout << "'9' - Структуры \n";
 
 		key = _getch();
 		ascii = key;
@@ -295,6 +371,27 @@ void LaunchLab3()
 			char* result = ReplaceTabsOnSpaces(str);
 			cout << result;
 			delete[] result;
+			system("pause");
+			break;
+		}
+		case '8':
+		{
+
+			char str[] = "Cake::::is::a:lie!";
+
+			cout << "!\t!\t!\t!\t!\t!" << endl;
+			cout << str << endl;
+			char* result = ReplaceSpacesOnTabs(str);
+			cout << result;
+			delete[] result;
+			system("pause");
+			break;
+		}
+		case '9':
+		{
+			Person person = ReadPerson();
+			PrintPerson(person);
+			
 			system("pause");
 			break;
 		}
