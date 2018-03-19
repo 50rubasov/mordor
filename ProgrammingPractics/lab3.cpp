@@ -116,7 +116,7 @@ char* GetSubstring(char* string, int startIndex, int charCount)
 	
 	if ((startIndex >= 0) && (startIndex+charCount <= length) && (charCount > 0))
 	{
-		char* substring = new char[charCount+1];
+		char* substring = new char[charCount + 1];
 		for (int i = 0; i < charCount; i++) 
 		{
 			substring[i] = string[startIndex + i];
@@ -363,9 +363,7 @@ void LaunchLab3()
 		}
 		case '7':
 		{
-
 			char str[] = "Cake\tis\ta lie!";
-
 			cout << "!\t!\t!\t!\t!\t!" << endl;
 			cout << str << endl;
 			char* result = ReplaceTabsOnSpaces(str);
@@ -377,8 +375,10 @@ void LaunchLab3()
 		case '8':
 		{
 
-			char str[] = "Cake::::is::a:lie!";
-
+			//char str[] = "Cake::::is::a:lie!";
+			char str[100];
+			cout << "Введите строку с пробелами, которые нужно заменить на табы";
+			gets_s(str);
 			cout << "!\t!\t!\t!\t!\t!" << endl;
 			cout << str << endl;
 			char* result = ReplaceSpacesOnTabs(str);
