@@ -1,4 +1,4 @@
-#include "lab1.h"
+#include "lab2.h"
 #include "stdafx.h"
 
 using namespace std;
