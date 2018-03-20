@@ -13,9 +13,12 @@ struct List
 	Node* head = NULL;
 	Node* tail = NULL;
 };
-
-void AddLast(List* list);
-void GetLength(List* list);
-void Show(List* list);
-Person MakeRandomPerson();
+void CopyString(char* string1, const char* string2);	//копирование строк
+void AddLast(List* list);								//добавление списка в конец
+void Show(List* list);									//вывод списка на экран
+Person MakeRandomPerson();								//рандомные персоны
+Person* Get(int index, List* list);						//поиск адреса по индексу
+void Remove(int index, List* list);						//удаление элемента по индексу
+void Clear(List* list);									//очистка списка
+void Insert(List* list, int index);						//ƒобавление элемента до массива
 void LaunchLab4();

@@ -5,7 +5,7 @@
 
 using namespace std;
 
-void CopyString(char* string1, const char* string2)
+void CopyString(char* string1, const char* string2)		//копирование строки
 {
 	int i = 0;
 	for (; string2[i]; i++)
@@ -15,7 +15,7 @@ void CopyString(char* string1, const char* string2)
 	string1[i] = '\0';
 }
 
-Person MakeRandomPerson()
+Person MakeRandomPerson()								//генерация рандомной личности
 {
 	Person newPerson;
 	char names[10][10] = { "Павел","Егор", "Иван", "Артем", "Сергей", "Николай","Алексей","Генадий","Владимир","Начин" };
@@ -27,7 +27,7 @@ Person MakeRandomPerson()
 
 	return newPerson;
 }
-void AddLast(List* list)
+void AddLast(List* list)								//добавление в конец 
 {
 	Node* newNode = new Node; 
 	newNode->person = MakeRandomPerson();
@@ -42,7 +42,7 @@ void AddLast(List* list)
 }
 
 
-void Show(List* list)
+void Show(List* list)									//показать список
 {
 	Node* node = list->head;
 	int index = 0;
@@ -62,7 +62,7 @@ void Show(List* list)
 	}
 }
 
-Person* Get(int index, List* list)
+Person* Get(int index, List* list)						//поиск адреса по индексу
 {
 	Node* node = list->head;
 
@@ -80,20 +80,48 @@ Person* Get(int index, List* list)
 	return NULL;
 }
 
-void Remove(int index, List* list)
+void Remove(int index, List* list)						//удаление элемента по индексу
 {
 	Node* node = list->head;
-	Person element = node->person;
-	while (node)
-	{
-		{
 
+	if (index >= 0 && node)
+	{
+		for (int i = 0; i < index; i++)
+		{
+			if (node->next == NULL)	
+			{
+				cout << "Индекс выходит за пределы списка\n";
+				return;
+			}
+			node = node->next;
 		}
-		node = node->next;
 	}
+	else
+	{
+		cout << "Индекс меньше нуля или список пуст\n";
+		return;
+	}
+	if (node->prev)
+	{
+		node->prev->next = node->next;
+	}
+	else
+	{
+		list->head = node->next;
+	}
+	if (node->next)
+	{
+		node->next->prev = node->prev;
+	}
+	else
+	{
+		list->tail = node->prev;
+	}
+	delete node;
+	cout << "Элемент удален\n";
 }
 
-void Clear(List* list) 
+void Clear(List* list)									//очистка списка
 {
 	Node* node = list->head;
 	if (node)
@@ -110,15 +138,55 @@ void Clear(List* list)
 	}
 }
 
+void Insert(List* list, int index)						//Добавление элемента до массива
+{
+	Node* newNode = new Node;
+	newNode->person = MakeRandomPerson();
+
+	Node* node = list->head;
+	if (index >= 0 && node)
+	{
+		for (int i = 0; i < index; i++)
+		{
+			if (node->next == NULL)
+			{
+				cout << "Индекс выходит за пределы списка\n";
+				return;
+			}
+			node = node->next;
+		}
+	}
+	else
+	{
+		cout << "Индек меньше нуля или список пуст\n";
+		return;
+	}
+	newNode->next = node;
+	newNode->prev = node->prev;
+	if (node->prev)
+	{
+		node->prev->next = newNode;
+	}
+	else
+	{
+		list->head = newNode;
+		node->prev = newNode;
+	}
+	cout << "Элемент добавлен\n";
+}
+
 void LaunchLab4()
 {
 	setlocale(0, "");
+	//Покраска консоли в матрицу
+	HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(hStdOut, FOREGROUND_GREEN);
 
 	List* list = new List;
 
 	int ascii = 0;
 	char key;
-
+	int index;
 	while (ascii != 27)
 	{
 		system("cls");
@@ -126,7 +194,10 @@ void LaunchLab4()
 		cout << "Нажмите... \n";
 		cout << "'1' - Добавление в конец \n";
 		cout << "'2' - Показать список \n";
-		cout << "'3' - Вывод адресса элемента \n";
+		cout << "'3' - Вывод адресса элемента по индексу \n";
+		cout << "'4' - Удаление элемента по индексу элемента \n";
+		cout << "'5' - Добавление по индексу \n";
+		cout << "'6' - Очистка списка \n";
 
 		key = _getch();
 		ascii = key;
@@ -136,6 +207,8 @@ void LaunchLab4()
 		case '1':
 		{
 			AddLast(list);
+			cout << "Элемент добавлен в конец\n";
+			system("pause");
 			break;
 		}
 		case '2':
@@ -146,10 +219,32 @@ void LaunchLab4()
 		}
 		case '3':
 		{
-			int index;
+
 			cout << "Введите индекс элемента, адресс которого нужно вывести \n";
 			cin >> index;
-			cout << Get(index,list);
+			cout << "Адрес: " << Get(index, list) << endl;
+			system("pause");
+			break;
+		}
+		case '4':
+		{
+			cout << "Введите индекс элемента, который нужно удалить\n";
+			cin >> index;
+			Remove(index, list);
+			system("pause");
+			break;
+		}
+		case '5':
+		{
+			cout << "Введите индекс элемента, перед которым нужно добавить элемент\n";
+			cin >> index;
+			Insert(list, index);
+			break;
+		}
+		case '6':
+		{
+			Clear(list);
+			cout << "Список очищен\n";
 			system("pause");
 			break;
 		}
