@@ -2,8 +2,8 @@
 
 enum Sex
 {
-	male,
-	famale
+	famale,
+	male
 };
 
 struct Person
@@ -22,8 +22,8 @@ int EnterValue();															//Проверка на правильность ввода и отчистка кода
 char* Uppercase(char* string);												//Верхний регистра
 char* Lowercase(char* string);												//Нижний регистр
 void SplitFilename(char* source, char* path, char* name, char* extension);	//Разделение дериктории файла
-
-
+Person ReadPerson();
+void CopyString(char* string1, const char* string2);
 void PrintPerson(Person person);
 
 int GetLength(char* string);												//Нахождение длинны строки	
