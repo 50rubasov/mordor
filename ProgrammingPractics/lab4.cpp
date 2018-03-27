@@ -2,35 +2,27 @@
 #include "stdafx.h"
 #include "lab4.h"
 #include "lab3.h"
-
+#include "stack.h"
 using namespace std;
 
-void CopyString(char* string1, const char* string2)		//копирование строки
-{
-	int i = 0;
-	for (; string2[i]; i++)
-	{
-		string1[i] = string2[i];
-	}
-	string1[i] = '\0';
-}
 
-Person MakeRandomPerson()								//генерация рандомной личности
+Person* MakeRandomPerson()								//генерация рандомной личности
 {
-	Person newPerson;
+	Person *newPerson = new Person;
+
 	char names[10][10] = { "Павел","Егор", "Иван", "Артем", "Сергей", "Николай","Алексей","Генадий","Владимир","Начин" };
 	char surnames[10][15] = { "Петров","Аншаков", "Селиванов", "Леонтев", "Юшманов", "Баринов","Чуватов","Ивлев","Ткаченко","Дууза" };
-	CopyString(newPerson.Name, names[rand() % 10]);
-	CopyString(newPerson.Surname, surnames[rand() % 10]);
-	newPerson.Age = rand() % 100;
-	newPerson.sex = Sex(male);
+	CopyString(newPerson->Name, names[rand() % 10]);
+	CopyString(newPerson->Surname, surnames[rand() % 10]);
+	newPerson->Age = rand() % 100;
+	newPerson->sex = Sex(male);
 
 	return newPerson;
 }
-void AddLast(List* list)								//добавление в конец 
+void AddLast(List* list, Person* person)								//добавление в конец 
 {
 	Node* newNode = new Node; 
-	newNode->person = MakeRandomPerson();
+	newNode->person = person;      
 	if (list->tail == NULL)
 		list->head = newNode;
 	else
@@ -52,7 +44,7 @@ void Show(List* list)									//показать список
 		{
 			cout << "\nИндекс: " << index << endl;
 			index++;
-			PrintPerson(node->person);
+			PrintPerson(*node->person);
 			node = node->next;
 		}
 	}
@@ -72,7 +64,7 @@ Person* Get(int index, List* list)						//поиск адреса по индексу
 		{
 			if (i == index)
 			{
-				return &node->person;
+				return node->person;
 			}
 			node = node->next;
 		}
@@ -84,41 +76,52 @@ void Remove(int index, List* list)						//удаление элемента по индексу
 {
 	Node* node = list->head;
 
-	if (index >= 0 && node)
+	try //код, который может привести к ошибке, располагается тут
 	{
+		if ((index < 0) || (node == NULL))
+		{
+			throw 1; //генерировать ошибку
+		}
 		for (int i = 0; i < index; i++)
 		{
-			if (node->next == NULL)	
+			if (node->next == NULL)
 			{
-				cout << "Индекс выходит за пределы списка\n";
-				return;
+				throw 2;
 			}
 			node = node->next;
 		}
+
+		if (node->prev)
+		{
+			node->prev->next = node->next;
+		}
+		else
+		{
+			list->head = node->next;
+		}
+		if (node->next)
+		{
+			node->next->prev = node->prev;
+		}
+		else
+		{
+			list->tail = node->prev;
+		}
+		delete node;
 	}
-	else
+
+	catch (int i)//сюда передастся ошибка
 	{
-		cout << "Индекс меньше нуля или список пуст\n";
-		return;
+		if (i == 1)
+		{
+			cout << "Ошибка №" << i << " - Индекс меньше нуля или список пуст\n" << endl;
+		}
+		if (i == 2)
+		{
+			cout << "Ошибка №" << i << " - Индекс выходит за пределы списка\n" << endl;
+		}
 	}
-	if (node->prev)
-	{
-		node->prev->next = node->next;
-	}
-	else
-	{
-		list->head = node->next;
-	}
-	if (node->next)
-	{
-		node->next->prev = node->prev;
-	}
-	else
-	{
-		list->tail = node->prev;
-	}
-	delete node;
-	cout << "Элемент удален\n";
+
 }
 
 void Clear(List* list)									//очистка списка
@@ -129,8 +132,10 @@ void Clear(List* list)									//очистка списка
 		while (node->next)
 		{
 			node = node->next;
+			delete node->prev->person;
 			delete node->prev;
 		}
+		delete node->person;
 		delete node;
 
 		list->head = NULL;
@@ -138,41 +143,53 @@ void Clear(List* list)									//очистка списка
 	}
 }
 
-void Insert(List* list, int index)						//Добавление элемента до массива
+void Insert(List* list, Person* person, int index)						//добавление элемента до массива
 {
 	Node* newNode = new Node;
-	newNode->person = MakeRandomPerson();
+	newNode->person = person;     //TODO передавать персону в параметр
 
 	Node* node = list->head;
-	if (index >= 0 && node)
+
+	try //код, который может привести к ошибке, располагается тут
 	{
+		if ((index < 0) || (node == NULL))
+		{
+			throw 1; //генерировать ошибку
+		}
 		for (int i = 0; i < index; i++)
 		{
 			if (node->next == NULL)
 			{
-				cout << "Индекс выходит за пределы списка\n";
-				return;
+				throw 2;
 			}
 			node = node->next;
 		}
+
+
+		newNode->next = node;
+		newNode->prev = node->prev;
+		if (node->prev)
+		{
+			node->prev->next = newNode;
+		}
+		else
+		{
+			list->head = newNode;
+			node->prev = newNode;
+		}
 	}
-	else
+
+	catch (int i)//сюда передастся ошибка
 	{
-		cout << "Индек меньше нуля или список пуст\n";
-		return;
+		if (i == 1)
+		{
+			cout << "Ошибка №" << i << " - Индекс меньше нуля или список пуст\n" << endl;
+		}
+		if (i == 2)
+		{
+			cout << "Ошибка №" << i << " - Индекс выходит за пределы списка\n" << endl;
+		}
 	}
-	newNode->next = node;
-	newNode->prev = node->prev;
-	if (node->prev)
-	{
-		node->prev->next = newNode;
-	}
-	else
-	{
-		list->head = newNode;
-		node->prev = newNode;
-	}
-	cout << "Элемент добавлен\n";
 }
 
 void LaunchLab4()
@@ -186,7 +203,7 @@ void LaunchLab4()
 
 	int ascii = 0;
 	char key;
-	int index;
+	int index, value;
 	while (ascii != 27)
 	{
 		system("cls");
@@ -198,6 +215,7 @@ void LaunchLab4()
 		cout << "'4' - Удаление элемента по индексу элемента \n";
 		cout << "'5' - Добавление по индексу \n";
 		cout << "'6' - Очистка списка \n";
+		cout << "'7' - Стек \n";
 
 		key = _getch();
 		ascii = key;
@@ -206,7 +224,7 @@ void LaunchLab4()
 		{
 		case '1':
 		{
-			AddLast(list);
+			AddLast(list, MakeRandomPerson());
 			cout << "Элемент добавлен в конец\n";
 			system("pause");
 			break;
@@ -238,7 +256,8 @@ void LaunchLab4()
 		{
 			cout << "Введите индекс элемента, перед которым нужно добавить элемент\n";
 			cin >> index;
-			Insert(list, index);
+			Insert(list, MakeRandomPerson(), index);
+			system("pause");
 			break;
 		}
 		case '6':
@@ -246,6 +265,63 @@ void LaunchLab4()
 			Clear(list);
 			cout << "Список очищен\n";
 			system("pause");
+			break;
+		}
+		case '7':
+		{
+
+			int AssciiValue1 = 0;
+			Stack* stack = CreateStack();
+			while (AssciiValue1 != 27)
+			{
+				system("cls");
+
+				cout << "Нажмите клавишу\n";
+				cout << "1: Информация о стеке" << endl;
+				cout << "2: Добавление элемента " << endl;
+				cout << "3: Удаление элемента " << endl;
+
+				key = _getch();
+				AssciiValue1 = key;
+
+				switch (AssciiValue1)
+				{
+				case '1':
+
+					cout << endl << "Стек: ";
+					for (int i = 0; i < stack->length; i++)
+					{
+						cout << stack->array[i] << " ";
+					}
+					cout << endl;
+					cout << "Длина Стека: " << stack->length << endl;
+					cout << "Длина буфера: " << stack->bufsize << endl;
+					system("pause");
+					break;
+
+				case '2':
+
+					cout << "Введите добавляемый элемент\n";
+					cin >> value;
+					PushStack(stack, value);
+					break;
+				case '3':
+					if (stack->length > 0)
+					{
+						int data = PopStack(stack);
+						cout << endl << "Полученный элемент = " << data << "\n";
+						system("pause");
+					}
+					else
+					{
+						cout << endl << "Стек пуст" << endl;
+						system("pause");
+					}
+					break;
+				}
+			}
+
+			DelStack(stack);
 			break;
 		}
 		}

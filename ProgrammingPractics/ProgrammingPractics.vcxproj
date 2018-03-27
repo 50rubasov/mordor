@@ -150,6 +150,7 @@
     <ClInclude Include="lab2.h" />
     <ClInclude Include="lab3.h" />
     <ClInclude Include="lab4.h" />
+    <ClInclude Include="stack.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="lab1.h" />
@@ -160,6 +161,7 @@
     <ClCompile Include="lab4.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="lab2.cpp" />
+    <ClCompile Include="stack.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
