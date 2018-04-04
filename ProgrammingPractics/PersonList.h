@@ -1,12 +1,14 @@
 #pragma once
 #include "stdafx.h"
 #include "Person.h"
-
+#include "PersonTools.h"
 class PersonList
 {
 private:
 	class PersonListItem
 	{
+	private:
+		Person * _value; //_value
 	public:
 		PersonListItem(Person* person)
 		{
@@ -20,14 +22,11 @@ private:
 
 		PersonListItem* Next = nullptr;
 		PersonListItem* Prev = nullptr;
-	private:
-		Person * _value; //_value
 	};
 
 	PersonListItem * _head;
 	PersonListItem * _tail;
 	int _count;
-	bool CheckChar(char name[]);//char*
 public:
 	PersonList(){};
 	void Add(Person* person);
@@ -36,8 +35,8 @@ public:
 	void RemoveAt(int index);
 	void Clear();
 	int GetCount();
-	Person* Read();
-	static Person* MakeRandomPerson();
+	//Person* Read();
+	//static Person* MakeRandomPerson();
 	void ShowList();
-	void ShowPerson(Person* person);
+	//void ShowPerson(Person* person);
 }; //operator>> operator<<

@@ -10,19 +10,20 @@ enum Sex
 
 class Person
 {
+private:
+	char* _name;//char*
+	char* _surname;//char*
+	int _age;
+	Sex _sex;
 public:
-	Person(char _name[40], char _surname[40], unsigned int _age, Sex _sex);
-	void SetName(char _name[40]);
-	void SetSurname(char _surname[40]);
-	void SetAge(unsigned int _age);
-	void SetSex(Sex _sex);
+	Person() {};
+	Person(char* name, char* surname, unsigned int age, Sex sex);
+	void SetName(char *name);
+	void SetSurname(char *surname);
+	void SetAge(unsigned int age);
+	void SetSex(Sex sex);
 	char* GetName();
 	char* GetSurname();
 	int GetAge();
 	Sex GetSex();
-private:
-	char _name[40];//char*
-	char _surname[40];//char*
-	int _age;
-	Sex _sex;
 };

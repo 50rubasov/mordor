@@ -45,9 +45,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="stdafx.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="targetver.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
@@ -72,11 +69,20 @@
     <ClInclude Include="PersonList.h">
       <Filter>Файлы заголовков\lab5</Filter>
     </ClInclude>
+    <ClInclude Include="CorrectEnter.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
     <ClInclude Include="lab5.h">
       <Filter>Файлы заголовков\lab5</Filter>
     </ClInclude>
-    <ClInclude Include="CorrectEnter.h">
+    <ClInclude Include="CopyString.h">
       <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="PersonTools.h">
+      <Filter>Файлы заголовков\lab5</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -104,14 +110,20 @@
     <ClCompile Include="Person.cpp">
       <Filter>Исходные файлы\lab5</Filter>
     </ClCompile>
-    <ClCompile Include="lab5.cpp">
-      <Filter>Исходные файлы\lab5</Filter>
-    </ClCompile>
     <ClCompile Include="PersonList.cpp">
       <Filter>Исходные файлы\lab5</Filter>
     </ClCompile>
     <ClCompile Include="CorrectEnter.cpp">
       <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="lab5.cpp">
+      <Filter>Исходные файлы\lab5</Filter>
+    </ClCompile>
+    <ClCompile Include="CopyString.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="PersonTools.cpp">
+      <Filter>Исходные файлы\lab5</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
