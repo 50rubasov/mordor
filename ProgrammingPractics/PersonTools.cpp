@@ -85,73 +85,10 @@ Person* PersonTools::Read()
 	cin >> person;
 
 	return person;
-	/*bool key = true;
-	char* tempName = new char[20];
-	char* tempSurname = new char[20];
-	unsigned int tempAge;
-	Sex tempSex;
-
-	while (key)
-	{
-		cout << endl << "Введите фамилию: ";
-		cin >> tempSurname;
-		key = !CheckChar(tempSurname);
-	}
-
-	key = true;
-
-	while (key)
-	{
-		cout << endl << "Введите имя: ";
-		cin >> tempName;
-		key = !CheckChar(tempName);
-	}
-
-	cout << endl << "Введите пол 0 - человек(женский пол), 1 - человек(мужской пол): ";
-	int n;
-
-	do
-	{
-		n = CorrectEnter();
-	} while (n != 0 && n != 1);
-
-	switch (n)
-	{
-	case famale:
-		tempSex = (Sex)famale;
-		break;
-	case male:
-		tempSex = (Sex)male;
-		break;
-	default:
-		break;
-	}
-
-	cout << endl << "Введите возраст: ";
-	tempAge = CorrectEnter();
-	return new Person(tempName, tempSurname, tempAge, tempSex);*/
+	
 }
 
 void PersonTools::ShowPerson(Person* person)
 {
 	cout << person << endl;
-
-
-	/*cout << "Имя: ";
-	cout << person->GetName() << endl;
-	cout << "Фамилия: ";
-	cout << person->GetSurname() << endl;
-	cout << "Возраст: " << person->GetAge() << endl;
-	switch (person->GetSex())
-	{
-	case famale:
-		cout << "Пол:";
-		cout << "Женщина" << endl << endl;
-		break;
-	case male:
-		cout << "Пол:";
-		cout << "Мужчина" << endl << endl;
-		break;
-	default: break;
-	}*/
 }

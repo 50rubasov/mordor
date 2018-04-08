@@ -9,6 +9,7 @@ private:
 	{
 	private:
 		Person * _value; //_value
+
 	public:
 		PersonListItem(Person* person)
 		{
@@ -27,6 +28,7 @@ private:
 	PersonListItem * _head;
 	PersonListItem * _tail;
 	int _count;
+
 public:
 	PersonList(){};
 	void Add(Person* person);
@@ -39,4 +41,5 @@ public:
 	//static Person* MakeRandomPerson();
 	void ShowList();
 	//void ShowPerson(Person* person);
-}; //operator>> operator<<
+	~PersonList() {};
+}; 

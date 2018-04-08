@@ -26,4 +26,5 @@ public:
 	char* GetSurname();
 	int GetAge();
 	Sex GetSex();
+	~Person() {};
 };

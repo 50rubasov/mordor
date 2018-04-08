@@ -25,7 +25,6 @@ void PersonList::Add(Person* person)
 //-----------------------------------------поиск по индексу---------------------------------------------
 Person* PersonList::Find(int index)
 {
-	PersonTools person;
 	if (index < 0)
 	{
 		return nullptr;
@@ -41,10 +40,6 @@ Person* PersonList::Find(int index)
 		}
 	}
 	
-	if (searchedItem->GetValue() != nullptr)
-	{
-		person.ShowPerson(searchedItem->GetValue());
-	}
 	return searchedItem->GetValue();
 }
 
