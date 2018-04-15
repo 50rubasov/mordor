@@ -1,7 +1,7 @@
 #pragma once
 #include "stdafx.h"
 #include "lab3.h"
-#include "CopyString.h"
+#include "StringFunctions.h"
 
 using namespace std;
 /*---------------------Замена табов на пробелы-------------------------------*/
@@ -100,17 +100,7 @@ int FindSubstring(char* string, char* substring)
 	}
 return -1;
 }
-/*---------------------Объединение строк------------------------------*/
-char* Concatenate(char* string1, char* string2) 
-{
-	int first = GetLength(string1);
-	for (int i = 0; string2[i] != '\0'; i++)
-	{
-		string1[first + i] = string2[i];
-	}
-	string1[first + GetLength(string2)] = 0;
-	return string1;
-}
+
 /*----------------------Вывод построки-----------------------------*/
 char* GetSubstring(char* string, int startIndex, int charCount) 
 {

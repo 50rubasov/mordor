@@ -37,11 +37,17 @@
     <Filter Include="Файлы заголовков\lab4">
       <UniqueIdentifier>{81641ea1-854b-406d-8a95-d86656e5c78d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Исходные файлы\lab5">
-      <UniqueIdentifier>{edced3da-2bc6-494c-a8c7-b0ffcf597d95}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Файлы заголовков\lab5">
       <UniqueIdentifier>{aa747ef6-df66-4727-898d-7b2e830cee41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\lab6">
+      <UniqueIdentifier>{14e49f34-a571-44b6-a443-bb34500a1fb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\lab6">
+      <UniqueIdentifier>{3d3b79fc-1e16-410c-ae61-df8fb5e87675}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\lab5">
+      <UniqueIdentifier>{edced3da-2bc6-494c-a8c7-b0ffcf597d95}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -78,11 +84,20 @@
     <ClInclude Include="lab5.h">
       <Filter>Файлы заголовков\lab5</Filter>
     </ClInclude>
-    <ClInclude Include="CopyString.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="PersonTools.h">
       <Filter>Файлы заголовков\lab5</Filter>
+    </ClInclude>
+    <ClInclude Include="Adult.h">
+      <Filter>Файлы заголовков\lab6</Filter>
+    </ClInclude>
+    <ClInclude Include="Child.h">
+      <Filter>Файлы заголовков\lab6</Filter>
+    </ClInclude>
+    <ClInclude Include="StringFunctions.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="lab6.h">
+      <Filter>Файлы заголовков\lab6</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -119,11 +134,20 @@
     <ClCompile Include="lab5.cpp">
       <Filter>Исходные файлы\lab5</Filter>
     </ClCompile>
-    <ClCompile Include="CopyString.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="PersonTools.cpp">
       <Filter>Исходные файлы\lab5</Filter>
+    </ClCompile>
+    <ClCompile Include="Adult.cpp">
+      <Filter>Исходные файлы\lab6</Filter>
+    </ClCompile>
+    <ClCompile Include="Child.cpp">
+      <Filter>Исходные файлы\lab6</Filter>
+    </ClCompile>
+    <ClCompile Include="StringFunctions.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="lab6.cpp">
+      <Filter>Исходные файлы\lab6</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

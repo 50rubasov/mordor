@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "PersonTools.h"
-#include "CopyString.h"
+#include "StringFunctions.h"
 #include "CorrectEnter.h"
 using namespace std;
 

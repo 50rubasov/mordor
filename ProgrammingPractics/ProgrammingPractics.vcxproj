@@ -147,7 +147,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="CopyString.h" />
+    <ClInclude Include="Adult.h" />
+    <ClInclude Include="Child.h" />
+    <ClInclude Include="lab6.h" />
+    <ClInclude Include="StringFunctions.h" />
     <ClInclude Include="CorrectEnter.h" />
     <ClInclude Include="lab2.h" />
     <ClInclude Include="lab3.h" />
@@ -162,7 +165,10 @@
     <ClInclude Include="lab1.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CopyString.cpp" />
+    <ClCompile Include="Adult.cpp" />
+    <ClCompile Include="Child.cpp" />
+    <ClCompile Include="lab6.cpp" />
+    <ClCompile Include="StringFunctions.cpp" />
     <ClCompile Include="CorrectEnter.cpp" />
     <ClCompile Include="lab1.cpp" />
     <ClCompile Include="lab3.cpp" />

@@ -2,6 +2,8 @@
 #include "stdafx.h"
 #include "Person.h"
 #include "PersonTools.h"
+#include "Adult.h"
+#include "Child.h"
 class PersonList
 {
 private:
@@ -40,6 +42,7 @@ public:
 	//Person* Read();
 	//static Person* MakeRandomPerson();
 	void ShowList();
+	void ShowDescriptions();
 	//void ShowPerson(Person* person);
 	~PersonList() {};
 }; 

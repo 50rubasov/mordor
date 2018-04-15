@@ -123,7 +123,37 @@ int PersonList::GetCount()
 }
 
 
+void PersonList::ShowDescriptions()
+{
+	PersonListItem* temp = _head;
 
+	if (temp)
+	{
+		cout << "Список:\n";
+		cout << "----------------------------------------------------\n";
+		while (temp)
+		{
+			if (temp->GetValue()->GetAge() < 18)
+			{
+				cout << "Ребенок" << endl;
+
+			}
+			else
+			{
+				cout << "Взрослый" << endl;
+			
+			}
+			Person* person = temp->GetValue();
+			cout << person->GetDescription() << endl;
+			temp = temp->Next;
+		}
+	}
+	else
+	{
+		cout << "Список пуст\n";
+	}
+	cout << endl;
+}
 
 void PersonList::ShowList()
 {

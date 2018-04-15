@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Person.h"
+
 using namespace std;
 
 Person::Person(char* name, char* surname, unsigned int age, enum Sex sex)
@@ -42,4 +43,20 @@ int Person::GetAge()
 Sex Person::GetSex()
 {
 	return _sex;
+}
+char* Person::GetDescription()
+{
+	char* description = new char[200];
+	*description = '\0';
+	char* age = new char[5];
+	Concatenate(description, _name);
+	Concatenate(description, " ");
+	Concatenate(description, _surname);
+	Concatenate(description, ", ");
+	_itoa_s(_age, age, 10, 10);
+	Concatenate(description, age);
+	Concatenate(description, " лет, ");
+	_sex == male ? Concatenate(description, "мужчина.") : Concatenate(description, "женщина.");
+	return description;
+
 }
