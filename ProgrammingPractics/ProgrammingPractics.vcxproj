@@ -150,6 +150,8 @@
     <ClInclude Include="Adult.h" />
     <ClInclude Include="Child.h" />
     <ClInclude Include="lab6.h" />
+    <ClInclude Include="lab7.h" />
+    <ClInclude Include="List.h" />
     <ClInclude Include="StringFunctions.h" />
     <ClInclude Include="CorrectEnter.h" />
     <ClInclude Include="lab2.h" />
@@ -168,6 +170,7 @@
     <ClCompile Include="Adult.cpp" />
     <ClCompile Include="Child.cpp" />
     <ClCompile Include="lab6.cpp" />
+    <ClCompile Include="lab7.cpp" />
     <ClCompile Include="StringFunctions.cpp" />
     <ClCompile Include="CorrectEnter.cpp" />
     <ClCompile Include="lab1.cpp" />

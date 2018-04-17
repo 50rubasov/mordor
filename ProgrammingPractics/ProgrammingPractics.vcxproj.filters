@@ -49,6 +49,12 @@
     <Filter Include="Исходные файлы\lab5">
       <UniqueIdentifier>{edced3da-2bc6-494c-a8c7-b0ffcf597d95}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Исходные файлы\lab7">
+      <UniqueIdentifier>{0d555885-d67a-4760-8fe6-e52f9b1e1463}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\lab7">
+      <UniqueIdentifier>{bf32aa80-4373-4104-9f06-4fb7cdc4edfe}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="targetver.h">
@@ -99,6 +105,12 @@
     <ClInclude Include="lab6.h">
       <Filter>Файлы заголовков\lab6</Filter>
     </ClInclude>
+    <ClInclude Include="lab7.h">
+      <Filter>Файлы заголовков\lab7</Filter>
+    </ClInclude>
+    <ClInclude Include="List.h">
+      <Filter>Файлы заголовков\lab7</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -148,6 +160,9 @@
     </ClCompile>
     <ClCompile Include="lab6.cpp">
       <Filter>Исходные файлы\lab6</Filter>
+    </ClCompile>
+    <ClCompile Include="lab7.cpp">
+      <Filter>Исходные файлы\lab7</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
