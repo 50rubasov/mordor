@@ -4,14 +4,6 @@
 #include "CorrectEnter.h"
 using namespace std;
 
-
-
-ostream& operator << (ostream &out, Person* person)
-{
-	out << '(' << person->GetName() << ", " << person->GetSurname() << ", " << person->GetAge() << ", " << person->GetSex() << ')';
-	return out;
-}
-
 istream& operator >> (istream &in, Person* person)
 {
 	bool key = true;

@@ -1,4 +1,5 @@
 #pragma once
+#include "stdafx.h"
 #include "PersonList.h"
 class PersonTools
 {
