@@ -179,7 +179,6 @@ void LaunchLab7()
 
 			list.Show();
 			system("pause");
-
 			break;
 		}
 		}
